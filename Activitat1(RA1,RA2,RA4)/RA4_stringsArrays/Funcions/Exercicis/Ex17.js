@@ -21,26 +21,33 @@ const productes = [
     { nom: "Cable HDMI", preu: 10 } 
 ];
 
-//Funciço tradicional
+//Funció tradicional
+
+function filtraPerPreu(producte) {
+  return producte.preu > 20;
+}
+
+function obtéNom(producte) {
+  return producte.nom;
+}
 
 function filtraCars(productes) {
-  const resultats = productes.filter(function (producte) {
-      return producte.preu > 20;
-    })
-
-    .map(function (producte) {
-      return producte.nom;
-    });
+  const filtrats = productes.filter(filtraPerPreu);
+  const resultats = filtrats.map(obtéNom);
   return resultats;
-}
+};
 
 console.log(filtraCars(productes));
 
 //Funció anònima amb variable asingada a una constant
 
-const anonima = filtraCars(productes);
+let anonima = function(){
+  const filtrados = productes.filter(filtraPerPreu);
+  const resultados = filtrados.map(obtéNom);
+  console.log(resultados);
+};
 
-console.log(anonima);
+anonima();
 
 //Funció fletxa
 
@@ -48,6 +55,5 @@ const fletxa = (productes) =>
     productes
     .filter((producte) => producte.preu > 20)
     .map((producte) => producte.nom);
-
 
 console.log(fletxa(productes));

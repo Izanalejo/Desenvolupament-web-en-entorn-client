@@ -1,3 +1,4 @@
+
 /*18. Neteja d'strings
 Tens un array amb noms d’usuaris no estandarditzats:
 
@@ -8,7 +9,7 @@ const usuaris = [
     " lAIA", 
     "julia "
 ];
-Escriu una funció tradicional anomenada netejaUsuaris que:
+Escriu una funció tradicional anomenada netejaUsuaris que:   
 
 Elimina espais (trim)
 
