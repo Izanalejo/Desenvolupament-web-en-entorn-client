@@ -1,0 +1,106 @@
+<html>
+  <head>
+
+</head>
+<body>
+<script>
+// 1️⃣ Datos de la página
+var datosPagina = {
+    titulo: "Mi Página Dinámica Avanzada",
+    introduccion: "Esta página se genera automáticamente usando JavaScript y manipulación del DOM.",
+    secciones: [
+        {
+            subtitulo: "Sección 1: Frutas",
+            parrafo: "Lista de frutas disponibles:",
+            lista: ["Manzana", "Banana", "Cereza"]
+        },
+        {
+            subtitulo: "Sección 2: Colores",
+            parrafo: "Lista de colores favoritos:",
+            lista: ["Rojo", "Verde", "Azul", "Amarillo"]
+        },
+        {
+            subtitulo: "Sección 3: Ciudades",
+            parrafo: "Algunas ciudades del mundo:",
+            lista: ["París", "Nueva York", "Tokio", "Barcelona"]
+        }
+    ],
+    pie: "© 2025 Institut Provençana"
+};
+
+// 2️⃣ Crear contenedor principal
+var mainContainer = document.createElement("div");
+
+
+// 3️⃣ Crear encabezado principal
+var titulo = document.createElement("h1");
+titulo.textContent = datosPagina.titulo;
+titulo.style.textAlign = "center";
+titulo.style.color = "rgb(44, 62, 80)";
+mainContainer.appendChild(titulo);
+
+// 4️⃣ Crear sección de introducción
+var parrafoIntro = document.createElement("p");
+parrafoIntro.textContent = datosPagina.introduccion;
+parrafoIntro.style.fontSize = "18px";
+parrafoIntro.style.lineHeight = "1.5";
+mainContainer.appendChild(parrafoIntro);
+
+
+// 5️⃣ Crear secciones dinámicas
+datosPagina.secciones.forEach(seccionData => {
+    var seccion = document.createElement("section");
+    seccion.style.borderTop = "1px solid rgb(204, 204, 204)";
+    seccion.style.marginTop = "20px";
+    seccion.style.paddingTop = "10px";
+
+
+    // Subtítulo
+    var subtitulo = document.createElement("h2");
+    subtitulo.textContent = seccionData.subtitulo;
+    subtitulo.style.color = "rgb(41, 128, 185)";
+    seccion.appendChild(subtitulo);
+    
+    // Párrafo
+    var parrafo = document.createElement("p");
+    parrafo.textContent = seccionData.parrafo;
+    seccion.appendChild(parrafo);
+
+    // Lista (si existe)
+    if (seccionData.lista && seccionData.lista.length > 0) {
+        var ul = document.createElement("ul");
+        ul.style.paddingLeft ="20px";
+        seccionData.lista.forEach(item => {
+            var li = document.createElement("li");
+            li.textContent = item;
+            ul.appendChild(li);
+    });
+    seccion.appendChild(ul);
+}
+    mainContainer.appendChild(seccion);
+});
+
+// 6️⃣ Agregar imagen de ejemplo (placehold.co)
+var imagen = document.createElement("img");
+imagen.setAttribute("src","https://placehold.co/400x200?text=DWC");
+imagen.style.display = "block";
+imagen.style.margin = "20 auto";
+imagen.setAttribute("title", "Imagen generada dinámicamente");
+mainContainer.appendChild(imagen);
+
+// 7️⃣ Crear pie de página
+var footer = document.createElement("footer");
+footer.textContent = datosPagina.pie;
+footer.style.textAlign = "center";
+footer.style.fontSize = "14px";
+footer.style.color = "rgb(127, 140, 141)";
+footer.style.marginTop = "30px";
+
+mainContainer.appendChild(footer);
+
+// 8️⃣ Agregar todo al body
+document.body.appendChild(mainContainer);
+</script>
+</body>
+
+</html>
