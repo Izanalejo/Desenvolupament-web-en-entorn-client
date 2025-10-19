@@ -1,3 +1,6 @@
+"use strict";
+
+
 //Demanar número
 let num; // Variable global
 
