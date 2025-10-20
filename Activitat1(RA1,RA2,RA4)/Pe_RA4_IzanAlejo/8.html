@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Creació de funció anònima
+        let anonima = function(numero){
+            let doble = numero * 2;
+            return doble;
+        }
+
+        const arr = [3, 7, 11, 14, 18, 21];
+        let doble = arr.map(anonima);
+        
+
+        console.log("Resultat final: ")
+        for (let i = 0; i < doble.length; i++) {
+            console.log(doble[i]);
+        }
+    </script>
+</body>
+</html>

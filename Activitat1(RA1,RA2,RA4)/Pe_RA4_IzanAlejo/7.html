@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercici 7</title>
+</head>
+<body>
+    <script>
+        //He escollit un array d'objectes per tal de poder manipular millor les dades i poder agafar solament les notes de cada alumne per calcular la mitjana.
+        let myArray = [
+            {"nom" : "Laura", "edad" : 18, "nota" : 7.5},
+            {"nom" : "Marc", "edad" : 19, "nota" : 8.2},
+            {"nom" : "Júlia", "edad" : 20, "nota" : 6.9},
+            {"nom" : "Pau", "edad" : 18, "nota" : 9.1}
+        ];
+
+        function calcularMitjana(myArray){
+            let suma = 0;
+            for (let i = 0; i < myArray.length; i++) {
+                suma += myArray[i].nota;
+            }
+            let notaMitja = suma / myArray.length;
+            return notaMitja
+        }
+        console.log(`La nota mitjana és: ${calcularMitjana(myArray)}` );
+
+
+    </script>
+</body>
+</html>

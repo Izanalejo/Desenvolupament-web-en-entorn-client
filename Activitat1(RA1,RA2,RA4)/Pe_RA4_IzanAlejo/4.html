@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercici 4</title>
+</head>
+<body>
+    <script>
+        //Creació de array
+        const nums = [2, 4, 6, 8, 10];
+        
+        //Càlculs 
+        let mult = nums.map(multiplicar);
+        console.log(mult);
+        
+    
+        let majors = mult.filter(mesDe10);
+        console.log(majors);
+
+        //Creació de funcions
+        
+        function multiplicar(index, value, array){
+            return index * index;
+        }
+
+
+        function mesDe10(index, value, array){
+            return index > 10;
+        }
+
+    </script>
+</body>
+</html>
