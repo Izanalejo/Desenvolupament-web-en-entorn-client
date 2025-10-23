@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Exemples Walking the DOM</title>
+
+  <script>
+    // Al carregar el HEAD, el BODY encara no existeix
+    console.log("Des de HEAD: document.body =", document.body); // null
+  </script>
+</head>
+
+<body>
+  <h1>Demostració de navegació pel DOM</h1>
+
+  <div id="bloc1">Bloc 1</div>
+
+  <ul id="llista">
+    <li><b>Element 1</b></li>
+    <li>Element 2</li>
+  </ul>
+
+  <div id="bloc2">Bloc 2</div>
+
+  <table id="taula" border="1">
+    <caption>Exemple de taula</caption>
+    <thead>
+      <tr><th>Nom</th><th>Edat</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Anna</td><td>23</td></tr>
+      <tr><td>Joan</td><td>34</td></tr>
+    </tbody>
+  </table>
+</body>
+</html>

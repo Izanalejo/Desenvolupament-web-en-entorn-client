@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="data:image/png;base64,iVBORw0KGgo=">
+  <title>Pràctica Avançada: Explorador DOM</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2em; }
+    section, article, div { border: 1px solid #ccc; padding: 10px; margin: 10px 0; border-radius: 6px; }
+    .highlight { background-color: yellow; }
+    table { border-collapse: collapse; width: 100%; margin-top: 10px; }
+    th, td { border: 1px solid #999; padding: 8px; }
+  </style>
+</head>
+<body>
+
+  <h1>Explorador i Editor del DOM</h1>
+
+  <section id="principal">
+    <article id="article1">
+      <h2>Secció 1</h2>
+      <p>Això és un paràgraf dins de la secció 1.</p>
+    </article>
+
+    <article id="article2">
+      <h2>Secció 2</h2>
+      <p>Un altre paràgraf amb <b>text en negreta</b>.</p>
+    </article>
+  </section>
+
+  <table id="taulaDades">
+    <caption>Dades d'exemple</caption>
+    <thead>
+      <tr><th>Nom</th><th>Edat</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Anna</td><td>23</td></tr>
+      <tr><td>Joan</td><td>34</td></tr>
+      <tr><td>Maria</td><td>29</td></tr>
+    </tbody>
+  </table>
+
+  <button id="botoResalta">1️⃣ Ressalta primer i últim fill de principal</button>
+  <button id="botoGermans">2️⃣ Mostra germà anterior i següent de la Secció 2</button>
+  <button id="botoPares">3️⃣ Mostra jerarquia de pares (des d'article 2, cap a dalt)</button>
+  <button id="botoTaula">4️⃣ Incrementa en una unitat cada edat de la taula</button>
+  <button id="botoAfegeix">5️⃣ Afegeix nova secció a principal</button>
+  <button id="botoNodes">6️⃣ Mostra tipus de nodes dels fills del body per pantalla (sota Consola de sortida)</button>
+  <h3>Consola de sortida</h3>
+  <pre id="log"></pre>
+  <script src="practicaDOM2-skeleton.js"></script>
+</body>
+</html>
