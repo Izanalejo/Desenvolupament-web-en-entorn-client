@@ -62,8 +62,6 @@ document.getElementById("botoPares").addEventListener("click", () => {
   // Recorremos hacia arriba por los padres
   while (elemento) {
     info("Nivell " + nivel, elemento.tagName);
-    log("Nivell " + nivel + ": " + elemento.tagName);
-    
     elemento = elemento.parentElement;
     nivel++;
   }
@@ -138,13 +136,13 @@ document.getElementById("botoNodes").addEventListener("click", function() {
 
     switch (node.nodeType) {
       case 1: // Element
-        descripcio = node.tagName + " – nodeType: 1";
+        descripcio = node.tagName + " nodeType: 1";
         break;
       case 3: // Text
-        descripcio = "#text – nodeType: 3";
+        descripcio = "#text nodeType: 3";
         break;
       case 8: // Comentari
-        descripcio = "#comment – nodeType: 8";
+        descripcio = "#comment nodeType: 8";
         break;
       default:
         descripcio = "nodeType: " + node.nodeType;
