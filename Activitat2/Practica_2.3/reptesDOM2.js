@@ -87,27 +87,43 @@ if (exerciciFet(4)) return;
 }
 
 function ex5() {
-  feedback("✅ contains: " + "");
+  if (exerciciFet(5)) return;
+  const bloc = document.querySelector(".bloc");
+  const especial = document.querySelector('[name="especial"]');
+  const conte = bloc?.contains(especial);
+  feedback(`✅ .bloc conté l'element "especial"? ${conte ? "Sí" : "No"}`);
   sumarPunts();
-  console.log(ex5.toString());
 }
 
 function ex6() {
-  feedback("✅ Exercici 6 completat!");
+  if (exerciciFet(6)) return;
+  const texts = document.querySelectorAll(".text:last-child");
+  texts.forEach(e => (e.style.background = "lightgreen"));
+  feedback("✅ Mostrats només els .text que són :last-child!");
   sumarPunts();
-  console.log(ex6.toString());
 }
 
 function ex7() {
+  if (exerciciFet(7)) return;
+  const bloc = document.querySelector(".bloc");
+  const nouParagraf = document.createElement("p");
+  nouParagraf.textContent = "Nou paràgraf afegit dinàmicament.";
+  bloc.appendChild(nouParagraf);
+  nouParagraf.classList.add("highlight");
   feedback("✅ Paràgraf afegit!");
   sumarPunts();
-  console.log(ex7.toString());
 }
 
 function ex8() {
-  feedback("✅ Filtrat avançat aplicat!");
+  if (exerciciFet(8)) return;
+  const parags = document.querySelectorAll("p");
+  parags.forEach(p => {
+    if (p.textContent.includes("DOM")) {
+      p.style.fontWeight = "bold";
+    }
+  });
+  feedback('✅ Ressaltats paràgrafs amb la paraula "DOM"!');
   sumarPunts();
-  console.log(ex8.toString());
 }
 
 function netejarEstils() {

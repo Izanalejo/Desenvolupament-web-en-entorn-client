@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <title>Pràctica DOM – ASIX (Autoavaluació amb barra de progrés)</title>
+  <link rel="stylesheet" href="pt24.css">
+</head>
+<body>
+  <h2>Pràctica 2.4 DOM Modificació documents (amb barra de progrés)</h2>
+  <p>Programa les operacions del DOM de cada botó. Cada acció només puntua una vegada.</p>
+
+  <div id="zona">
+    <div class="element">Element inicial</div>
+  </div>
+
+  <div>
+    <button id="botoCrear">➕ Crear nou element</button>
+    <button id="botoAfegir">📎 Afegir al final (append)</button>
+    <button id="botoPrepend">⬆️ Afegir al principi (prepend)</button>
+    <button id="botoAbans">↩️ Inserir abans (before)</button>
+    <button id="botoDespres">↪️ Inserir després (after)</button>
+    <button id="botoReemplaçar">🔁 Reemplaçar element</button>
+    <button id="botoEliminar">❌ Eliminar últim</button>
+    <button id="botoClonar">🧬 Clonar primer element</button>
+    <button id="botoFragment">🧱 Afegir amb DocumentFragment</button>
+  </div>
+
+  <div id="progress-container">
+    <div id="progress-bar">0%</div>
+  </div>
+
+  <p>Puntuació: <span id="puntuacio">0</span> punts</p>
+  <p id="missatge"></p>
+
+<script src="pt24.js"></script>
+</body>
+</html>

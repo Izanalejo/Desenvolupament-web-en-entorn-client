@@ -1,0 +1,87 @@
+let nou = createElement('div')
+
+
+let nou = document.createElement('div')
+undefined
+nou
+<div>​</div>​
+nou.textContent = 'Hola soc nou'
+'Hola soc nou'
+
+document.body.append(nou)
+undefined
+
+let intro = document.getElementById('intro')
+undefined
+
+intro.before('Hola abans')
+undefined
+
+intro.after('Text després')
+undefined
+
+let cont = document.getElementById('contenidor')
+undefined
+cont.body.prepend('Inici del contenidor')
+
+
+cont.body.prepend('Inici del contenidor')
+
+
+let llista = document.getElementById('llista')
+undefined
+let nouLista = createElement('p')
+
+
+nouLista = createElement('p')
+
+
+let nouLista = document.createElement('p')
+undefined
+
+nouLista.textContent = "he substituit la llista"
+'he substituit la llista'
+
+llista.replaceChildren(nouLlista)
+
+
+llista.replaceWith(nouLlista)
+
+
+llista.replaceWith(nouLlsta)
+
+
+llista.replaceWith(nouLista)
+undefined
+cont.document.pretend('Inici del contenidor')
+
+let copia = nouLista.cloneNode(true)
+undefined
+
+copia
+<p>​he substituit la llista​</p>​
+document.body.append(copia)
+
+document.body.append(copia)
+
+let cont = document.getElementById('contenidor')
+undefined
+cont.insertAdjancentHTML('beforeend', '<strong>Aixo es HTML inserit amb insertAdjacentHTML')
+
+cont.insertAdjacentHTML('afterend', '<strong>Aixo es HTML inserit amb insertAdjacentHTML')
+undefined
+
+let fragment = document.createDocumentFragment()
+undefined
+
+
+let fragment = document.createDocumentFragment()
+undefined
+for (let i = 0; i <= 3; i++) {
+    let li = document.createElement('li'); li.textContent = "Nou Element " + i; fragment.append(li);
+}
+undefined
+fragment
+#document-fragment<li>​Nou Element 0​</li>​<li>​Nou Element 1​</li>​<li>​Nou Element 2​</li>​<li>​Nou Element 3​</li>​
+document.querySelector('ul').append(fragment)
+undefined
