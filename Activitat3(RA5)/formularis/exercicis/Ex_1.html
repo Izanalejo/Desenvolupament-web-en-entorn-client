@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulari</title>
+</head>
+<body>
+  <form id="formulariContacte" method="get" action="">
+
+  <label for="nom">Nom:</label>
+  <input type="text" id="nom" name="nom" required />
+
+  <label for="cognom">Cognom:</label>
+  <input type="text" id="cognom" name="cognom" required />
+
+  <label for="edat">Edat:</label>
+  <input type="number" id="edat" name="edat" min="18" required />
+
+  <label for="dni">DNI:</label>
+  <input type="text" id="dni" name="dni" required />
+
+  <fieldset>
+    <legend>Gènere</legend>
+    <label><input type="radio" name="genere" value="home" required> Home</label>
+    <label><input type="radio" name="genere" value="dona"> Dona</label>
+    <label><input type="radio" name="genere" value="altres"> Altres</label>
+  </fieldset>
+
+  <fieldset>
+    <legend>Interessos</legend>
+    <label><input type="checkbox" name="interes" value="música"> Música</label>
+    <label><input type="checkbox" name="interes" value="esport"> Esport</label>
+    <label><input type="checkbox" name="interes" value="lectura"> Lectura</label>
+  </fieldset>
+
+  <label for="ciutat">Ciutat:</label>
+  <select name="ciutat" id="ciutat" required>
+    <option value="">--Selecciona--</option>
+    <option value="barcelona">Barcelona</option>
+    <option value="girona">Girona</option>
+    <option value="lleida">Lleida</option>
+    <option value="tarragona">Tarragona</option>
+  </select>
+
+  <button type="submit">Enviar</button>
+</form>
+</body>
+</html>
+
+
+
+<script>
+  document.getElementById("formulariContacte").addEventListener("submit", function (event){
+    event.preventDefault(); // Evita enviar de moment
+ 
+    const nom = document.getElementById("nom").value.trim();
+    const cognom = document.getElementById("cognom").value.trim();
+    const edat = parseInt(document.getElementById("edat").value);
+    const dni = document.getElementById("dni").value.trim();
+    const genere = document.querySelector("input[name='genere']:checked");
+    const ciutat = document.getElementById("ciutat").value;
+
+    if (!nom || !cognom || !dni || !genere || ciutat === "" || isNaN(edat)) {
+      alert("Cal omplir tots els camps.");
+      return;
+    }
+
+    if (edat < 18) {
+      alert("Has de ser major d'edat (18 o més).");
+      return;
+    }
+
+    alert("Formulari enviat correctament!");
+    this.submit(); // Ara sí envia
+  });
+</script>

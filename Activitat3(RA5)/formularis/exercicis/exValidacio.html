@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+     <style>
+        input[type="radio"] {
+            margin-left: 10px;
+            margin-right: 5px;
+        }
+        
+        body {
+            padding: 20px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 style="text-align: center;">Formulari de contacte</h1><br>
+    <!-- no calen tots els atributs perquè JS pot enviar perfectament pel seu 
+     compte al servidor i amb el mètode que vulguis-->
+    <!-- <form id="formulariContacte" name="formulariContacte" action="pepito.php" method="get"> -->
+ <div class="container">
+    <form id="formulariExValidacio"method="get">
+        <div class="mb-3">
+            <label for="nom" class="form-label">Nom</label>
+            <input type="text" class="form-control" id="nom" placeholder="Dona'm un nom">
+        </div>
+
+        <div class="mb-3">
+            <label for="email" class="form-label">Direcció Email</label>
+            <input type="text" class="form-control" id="email" aria-describedby="emailHelp">
+        </div>
+
+        <div class="mb-3">
+            <label for="passw" class="form-label">Contrasenya:</label>
+            <input type="password" class="form-control" id="passw" placeholder="Introdueix contrasenya">
+        </div>
+        <div class="mb-3">
+            <label for="passw2" class="form-label">Repetir contrasenya:</label>
+            <input type="password" class="form-control" id="passw2" placeholder="Repeteix contrasenya">
+        </div>
+
+        <div class="mb-3">
+            <label for="dni" class="form-label">DNI:</label>
+            <input type="text" class="form-control" id="dni" placeholder="">
+        </div>
+
+        <div class="mb-3">
+            <label for="nom" class="form-label">Data de naixement:</label>
+            <input type="date" class="form-control" id="data" placeholder="dd/mm/aaaa">
+        </div>
+        
+        <div><label for="sexe" class="form-label">Sexe</label><br>
+            <input type="radio"  name="sexe" id="Home"> Home
+            <input type="radio"  name="sexe" id="Dona"> Dona
+            <input type="radio"  name="sexe" id="Altres"> Altre<br><br>
+        </div>
+        
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <input type="reset" class="btn btn-warning" value="Esborrar tots els camps">
+    </form>
+
+ </div>
+    <script src="/Activitat3(RA5)/formularis/js/exValidacio.js"></script>
+</body>
+</html>
