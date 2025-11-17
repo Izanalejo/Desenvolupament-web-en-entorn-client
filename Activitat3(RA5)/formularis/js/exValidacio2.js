@@ -42,16 +42,15 @@ form2.addEventListener('submit', (event) => {
     city = form2.elements.city.value
     birthday = form2.elements.birthday.value
 
-    let aficiones = document.getElementsByName("aficions");
-    let checkboxes = aficiones.querySelectorAll('input[type="checkbox"]');
+    let checkboxes = document.querySelectorAll('input[name="aficions"]');
     let aficionesSeleccionadas = [];
 
-    checkboxes.forEach((checkbox) => {
-        if (checkbox.checked) {
-            aficionesSeleccionadas.push(checkbox.name);
-        }
+checkboxes.forEach(checkbox => {
+    if (checkbox.checked) {
+        aficionesSeleccionadas.push(checkbox.value);
+    }
+});
 
-    });
     error = "";
 
 
