@@ -1,7 +1,6 @@
 //llego al formulaio haciendo servir documents.forms
 let form2 = document.forms[0] // <- Accedo al form que esta en la posicion 0
 
-//sean variables globales
 
 //Regex para validar los campos
 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
@@ -21,14 +20,21 @@ inputNom.addEventListener("blur", () => {
         errorNom.innerHTML = "";
     }
 });
+// --- VALIDACIÓN EN BLUR DEL EMAIL ---
+const inputEmail = document.getElementById("email");
+        const errorEmail = document.getElementById("error-email");
+inputEmail.addEventListener("blur", () => {
+            if (!emailRegex.test(inputEmail.value.trim())) {
+                errorEmail.innerHTML = "El correo no es válido ❌";
+            } else {
+                errorEmail.innerHTML = "";
+            }
+        });
 
 //----------------------------------------------------------------
-//Codigo proporcionado por chatgpt - forma de imprimir el "submit"
 form2.addEventListener('submit', (event) => {
     event.preventDefault(); // evita que se recargue la página
     //Variables para recoger los elementos enviados por formulario
-    nom = form2.elements.nom.value
-    email = form2.elements.email.value
     dni = form2.elements.dni.value
     pass = form2.elements.pass.value
     con_password = form2.elements.con_password.value
@@ -36,34 +42,24 @@ form2.addEventListener('submit', (event) => {
     city = form2.elements.city.value
     birthday = form2.elements.birthday.value
 
+    let aficiones = document.getElementsByName("aficions");
+    let checkboxes = aficiones.querySelectorAll('input[type="checkbox"]');
+    let aficionesSeleccionadas = [];
+
+    checkboxes.forEach((checkbox) => {
+        if (checkbox.checked) {
+            aficionesSeleccionadas.push(checkbox.name);
+        }
+
+    });
     error = "";
 
 
     //VALIDAR CAMPOS VACIOS ----------------------------------
-    if (nom === "" || email === "" || pass === "" || con_password === "" || dni === "" || gender === "" || city === "" || birthday === "") {
+    if (nom==="" ||email=== "" || pass === "" || con_password === "" || dni === "" || gender === "" || city === "" || birthday === "") {
         error += "Todos los campos son obligatorios ⚠️ <br>"
 
     }
-    //VALIDAR NOMBRE --------------------------------------
-    if (!nameRegex.test(nom)) {
-        error += "El nombre no es válido <br>";
-
-    }
-
-    //VALIDAR EMAIL---------------------------------------
-    if (!emailRegex.test(email)) {
-        const inputEmail = document.getElementById("email");
-        const errorEmail = document.getElementById("error-email");
-
-        inputEmail.addEventListener("blur", () => {
-            if (!emailRegex.test(inputEmail.value.trim())) {
-                errorEmail.innerHTML = "El correo no es válido ❌";
-            } else {
-                errorEmail.innerHTML = "";
-            }
-        });
-    }
-
     //VALIDAR CONTRASEÑA----------------------------------
     if (!passwordRegex.test(pass)) {
         error += "La contraseña no es valida <br>"
@@ -100,6 +96,9 @@ form2.addEventListener('submit', (event) => {
         console.log("Fecha de nacimiento: " + birthday)
         console.log("Genero: " + gender)
         console.log("Lugar de nacimiento: " + city)
+        console.log("Aficiones: " + aficionesSeleccionadas.join(", "))  
+        
+        console.l
         form2.reset(); // Neteja el formulari
 
     }
@@ -108,7 +107,6 @@ form2.addEventListener('submit', (event) => {
 
 
 });
-//----------------------------------------------------------------
 
 //VALIDAR DNI ----------------------------------------------------
 function validarDNI() //no necesito pasar la variable dni ya que es global
