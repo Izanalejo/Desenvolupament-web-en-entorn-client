@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard BOM</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>Dashboard BOM</h1>
+
+  <div id="session-greeting"></div>
+
+  <div class="container">
+
+    <section>
+      <h2>Informació del navegador</h2>
+      <div class="contador">0</div>
+      <button id="btn-info-browser">Mostra informació</button>
+      <pre id="browser-info"></pre>
+    </section>
+
+    <section>
+      <h2>Mida finestra (dinàmica)</h2>
+      <div class="contador">0</div>
+      <p id="window-size"></p>
+    </section>
+
+    <section>
+      <h2>Gestió del temps</h2>
+      <div class="contador">0</div>
+      <button id="btn-start-countdown">Comptador 4s amb redirecció</button>
+      <pre id="countdown"></pre>
+    </section>
+
+    <section>
+      <h2>Historial</h2>
+      <button id="btn-back">Enrere</button>
+      <div class="contador">0</div>
+      <button id="btn-forward">Endavant</button>
+    </section>
+
+    <section>
+      <h2>Pestanyes</h2>
+      <button id="btn-open-window">Obre nova pestanya</button>
+      <div class="contador">0</div>
+    </section>
+
+    <section>
+      <h2>Cookies</h2>
+      <button id="btn-set-cookie">Crear cookie usuari</button>
+      <div class="contador">0</div>
+      <button id="btn-read-cookie">Llegir cookies</button>
+      <pre id="cookie-output"></pre>
+    </section>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

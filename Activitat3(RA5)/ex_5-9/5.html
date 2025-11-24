@@ -1,0 +1,17 @@
+<body>
+    <input type="text" id="idx" placeholder="x"/>
+    <input type="text" id="idy" placeholder="y"/>
+
+    <script>
+        const body = document.querySelector('body');
+        const x = document.getElementById('idx')
+        const y = document.getElementById('idy')
+
+        body.addEventListener('mousemove', (e) => {
+            x.value = e.clientX
+            y.value = e.clientY
+        })
+    </script>
+
+</body>
+</html>
