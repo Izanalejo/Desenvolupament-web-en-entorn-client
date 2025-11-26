@@ -24,7 +24,7 @@ borrar.addEventListener("click", () => {
 });
 llistarCookies.addEventListener("click", () => {
     alert(document.cookie);
-})
+});
 
 
 //RECOLLIR UNA COOKIE 
