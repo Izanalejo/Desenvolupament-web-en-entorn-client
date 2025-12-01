@@ -1,3 +1,5 @@
+
+
 // ---------- SALUTACIÓ BASADA EN COOKIES ----------
 function getCookies(name){
     const cookies = document.cookie.split('; ');
@@ -77,8 +79,57 @@ btnContador.addEventListener('click', () => {
 });
 // ---------- 4. HISTÒRIA ----------
 
+document.getElementById("btn-back").addEventListener("click", () => {
+  history.back();
+});
+
+document.getElementById("btn-forward").addEventListener("click", () => {
+  history.forward();
+});
 // ---------- 5. FINESTRES / PESTANYES ----------
 
+document.getElementById("btn-open-window").addEventListener("click", () => {
+  window.open("https://www.wikipedia.org", "_blank");
+});
+
+
 // ---------- 6. COOKIES ----------
+document.getElementById("btn-set-cookie").addEventListener("click", function () {
+    const username = prompt("Introdueix el teu nom d'usuari:");
+    if (username) {
+        const d = new Date();
+        d.setTime(d.getTime() + 24 * 60 * 60 * 1000); // 24 hores
+        document.cookie = `user=${username}; expires=${d.toUTCString()}; path=/`;
+        alert("Cookie creada correctament!");
+    }
+});
+
+// Funció per llegir cookies i mostrar-les en #cookie-output
+document.getElementById("btn-read-cookie").addEventListener("click", function () {
+    const cookies = document.cookie.split("; ");
+    let output = "";
+    cookies.forEach(cookie => {
+        const [name, value] = cookie.split("=");
+        if(name === "user") {
+            output = `user=${value}`;
+        }
+    });
+    if(output === "") output = "No hi ha cap cookie d'usuari.";
+    document.getElementById("cookie-output").textContent = output;
+});
 
 // ---------- 7.  EXTRA. REPÀS DE DOM: CANVI DE COLOR RANDOM I RECOMPTE D'ENTRADES A CADA SESSIÓ ----------
+
+const randomColors = ["#ffd6a5", "#caffbf", "#9bf6ff", "#a0c4ff", "#ffadad", "#bdb2ff"];
+
+/** Canvi de color i recompte entrades */
+document.querySelectorAll("section").forEach((sec) => {
+  sec.addEventListener("mouseenter", () => {
+    const color = randomColors[Math.floor(Math.random() * randomColors.length)];
+    sec.style.backgroundColor = color;
+
+    // Actualitza comptador de la secció
+    const contador = sec.querySelector(".contador");
+    if (contador) contador.textContent = parseInt(contador.textContent) + 1;
+  });
+});

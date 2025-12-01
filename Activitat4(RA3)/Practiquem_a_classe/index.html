@@ -17,16 +17,42 @@
     ></script>
   </head>
   <body>
-         <div id="date">
-            <p id="hora"></p>
+    <nav class="navbar navbar-expand-lg bg-secondary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <!-- Un solo contenedor: frase (span) + hora (span) -->
+        <p id="date-line" style="margin: 12px 8px; text-align: center">
+          <span id="frase"></span>
+          <span id="hora" style="margin-left: 8px"></span>
+        </p>  
+      </div>
+      
+    </nav>
+    <div style="padding: 20px">
+      <h1 style="text-align: center;">Validar Credencials</h1>
 
-         </div>
-         <div id="Login">
+      <form id="loginForm">
+        <label>Usuari</label>
+        <input
+          type="text"
+          id="user"
+          class="form-control"
+          placeholder="Introdueix usuari: user"
+        /><br />
 
-         </div>
-         <div id="cookies">
+        <label>Contrasenya</label>
+        <input
+          type="password"
+          id="passwd"
+          class="form-control"
+          placeholder="Introdueix contrasenya: user1234"
+        /><br /><br />
 
-         </div>
+        <button class="btn btn-primary" type="submit">Inicia sessió</button>
+      </form>
+    </div>
+    <p id="msg"></p>
+
     <script src="script.js"></script>
   </body>
 </html>

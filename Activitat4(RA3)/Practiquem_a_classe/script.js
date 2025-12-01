@@ -1,20 +1,58 @@
-const missatge = document.getElementById('date');
-const missatge2 = document.getElementById('hora')
+const fraseEl = document.getElementById('frase');
+const horaEl = document.getElementById('hora');
 
-let date = new Date(); 
+const data = new Date();
+const meses = [
+  "Gener","Febrer","Març","Abril","Maig","Juny","Juliol","Agost","Setembre","Octubre","Novembre","Desembre"
+];
 
-let meses = ["Gener", "Febrer", "Març", "Abril", "Maig", "Juny", "Juliol", "Agost", "Setembre", "Octubre", "Novembre", "Desembre"];
+fraseEl.textContent = `Avui és ${data.getDate()} de ${meses[data.getMonth()]} del ${data.getFullYear()},`;
 
-
-
-let myVar = setInterval(myTimer ,1000);
-function myTimer() {
-    const d = new Date();
-    document.getElementById("data").innerHTML = d.toLocaleTimeString();
+// Funció que actualitza l'hora
+function updateHora() {
+  horaEl.textContent = new Date().toLocaleTimeString();
 }
 
-let frase = "Avui és " + date.getDay() + " de " + meses[date.getMonth()] + " del "+ date.getFullYear() + ", "; 
+updateHora();              // mostra al carregar
+setInterval(updateHora, 1000); // actualitza cada segon
 
-missatge.innerHTML= frase; 
 
-missatge2.innerHTML = date.toLocaleTimeString();
+//FORMULARI DE LOGIN
+//Array per a les credencials vàlides
+
+const credencials = [
+    { user: "user", passwd: "user1234" },
+];
+
+//Variables de login i missatge 
+const form = document.getElementById("loginForm");
+const msg = document.getElementById("msg");
+
+//AddEventlistener per al botó submit
+form.addEventListener("submit", (e) => {
+    e.preventDefault(); // <--Per no fer enviaments en fals 
+
+    const userInput = document.getElementById("user").value.trim();
+    const passInput = document.getElementById("passwd").value.trim();
+
+    // Buscar usuari
+    const usuariTrobat = credencials.find(u => u.user === userInput);
+
+    if (!usuariTrobat) {
+        msg.textContent = "L'usuari no existeix";
+        msg.style.color = "red";
+        return;
+    }
+
+    // Comprobar contraseña
+    if (usuariTrobat.passwd !== passInput) {
+        msg.textContent = "La contrasenya és incorrecta";
+        msg.style.color = "red";
+        return;
+    }
+
+    // Login correcto
+    msg.textContent = "Validació correcta!";
+    msg.style.color = "green";
+
+});
