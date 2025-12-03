@@ -7,51 +7,50 @@
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-      crossorigin="anonymous"
     />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-      crossorigin="anonymous"
-    ></script>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg bg-secondary">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">Navbar</a>
-        <!-- Un solo contenedor: frase (span) + hora (span) -->
         <p id="date-line" style="margin: 12px 8px; text-align: center">
           <span id="frase"></span>
           <span id="hora" style="margin-left: 8px"></span>
-        </p>  
+        </p>
       </div>
-      
     </nav>
-    <div style="padding: 20px">
+
+    <div style="padding: 20px" id="form-container">
       <h1 style="text-align: center;">Validar Credencials</h1>
 
       <form id="loginForm">
         <label>Usuari</label>
-        <input
-          type="text"
-          id="user"
-          class="form-control"
-          placeholder="Introdueix usuari: user"
-        /><br />
+        <input type="text" id="user" class="form-control" /><br />
 
         <label>Contrasenya</label>
-        <input
-          type="password"
-          id="passwd"
-          class="form-control"
-          placeholder="Introdueix contrasenya: user1234"
-        /><br /><br />
+        <input type="password" id="passwd" class="form-control" /><br /><br />
 
         <button class="btn btn-primary" type="submit">Inicia sessió</button>
       </form>
+
+      <p id="msg"></p>
     </div>
-    <p id="msg"></p>
+
+    <!-- MENSAJE DE COOKIES -->
+    <div id="cookieBox" style="padding: 15px; background: #eee; position: fixed; bottom: 0; width: 100%;">
+      <label>Vols acceptar les cookies?</label>
+      <button id="acceptar">Acceptar</button>
+      <button id="rebutjar">Rebutjar</button>
+    </div>
+
+    <!-- SELECTOR DE CURSOS -->
+    <div id="select-container" style="padding: 20px; display:none;">
+      <h3>Selecciona un curs</h3>
+      <select id="selectCursos" class="form-select" style="width: 200px;"></select>
+
+      <h3 style="margin-top:25px;">Alumnes</h3>
+      <div id="taulaAlumnes"></div>
+    </div>
 
     <script src="script.js"></script>
   </body>
