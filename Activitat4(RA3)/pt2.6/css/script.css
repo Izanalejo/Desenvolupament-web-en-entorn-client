@@ -1,0 +1,38 @@
+    body { background: #f6f7fb; }
+    .topbar { position: sticky; top: 0; z-index: 20; background: #fff; border-bottom: 1px solid #e6e6e6; }
+    .brand { letter-spacing: .2px; }
+
+    /* Zona de la cistella */
+    .cart-area { position: relative; display: inline-flex; align-items: center; gap: .5rem; cursor: pointer; }
+    .cart-icon { width: 10px; height: 10px; }
+    .cart-count { min-width: 22px; height: 22px; border-radius: 999px; background: #0d6efd; color: #fff;
+                  font-size: 8px; display: inline-flex; align-items: center; justify-content: center;
+                  padding: 0 6px; line-height: 1; }
+
+    /* Dropdown que surt en hover (com demana l’enunciat) */
+    .cart-dropdown {
+      position: absolute;
+      left: 0;
+      top: 80%;
+      width: min(520px, 92vw);
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0 12px 30px rgba(0,0,0,.12);
+      padding: .75rem;
+      display: none;
+    }
+    .cart-area:hover .cart-dropdown { display: block; }
+
+    /* Taula */
+    .cart-table { width: 100%; font-size: 0.92rem; }
+    .cart-table thead th { position: sticky; top: 0; background: #fff; z-index: 1; }
+
+    .prod-img { height: 80px; object-fit: cover; border-radius: 10px; }
+
+    /* Modal de compra (Bootstrap) */
+    .modal-product-img { width: 44px; height: 44px; object-fit: cover; border-radius: 8px; }
+
+    /* Un toc de coherència visual */
+    .btn-primary { border-radius: 999px; }
+    .btn-outline-secondary { border-radius: 999px; }
