@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <title>Zoo de Barcelona</title>
+</head>
+<body>
+
+    <h1>Gestió del Zoo</h1>
+
+    <!-- MENÚ -->
+    <button id="btnLlista">Llista</button>
+    <button id="btnGestiona">Gestiona</button>
+
+    
+
+    <!-- SECCIÓ MENÚ LLISTA -->
+    <div id="zonaLlista" style="display:none;">
+        <h2>Llista d'animals per espècie</h2>
+
+        <select id="selectorEspecies">
+            <option value="">-- Selecciona espècie --</option>
+        </select>
+
+        <div id="resultatLlista"></div>
+    </div>
+
+    <!-- SECCIÓ MENÚ  GESTIONA -->
+    <div id="zonaGestiona" style="display:none;">
+        <h2>Gestió d'animals</h2>
+
+        <div id="taulaGestiona"></div>
+
+        <button id="btnCrea">Crea</button>
+        <button id="btnEsborra">Esborra</button>
+        <button>Modifica</button><!-- no implementat, podríem ficar l'atribut disabled -->
+        
+        
+        
+        <form id="formulari" style="display: none;">
+        <p>
+           ID de l'animal:
+            <input type="number" id="identificador">
+            <span class="error" id="errorId"></span>
+        </p>
+        <p>
+            Nom de l'animal:
+            <input type="text" id="nom">
+            <span class="error" id="errorNom"></span>
+        </p>
+
+        <p>
+            Espècie:
+            <select id="especie">
+                <option value="">-- Selecciona --</option>
+                <option value="au">Au</option>
+                <option value="mamifer">Mamífer</option>
+                <option value="peix">Peix</option>
+                <option value="amfibi">Amfibi</option>
+            </select>
+            <span class="error" id="errorEspecie"></span>
+        </p>
+
+        <p>
+            Sexe:
+            <input type="radio" name="sexe" value="mascle"> Mascle
+            <input type="radio" name="sexe" value="femella"> Femella
+            <span class="error" id="errorSexe"></span>
+        </p>
+
+        <p>
+            Any naixement:
+            <input type="number" id="any">
+            <span class="error" id="errorAny"></span>
+        </p>
+        <p>La resta de camps</p>
+        <button type="submit" id="btnEnviar" disabled>Enviar</button>
+    </form>
+       
+    </div>
+
+    <script src="./js/script.js"></script>
+</body>
+</html>

@@ -22,12 +22,15 @@ const rebutjar = document.getElementById("rebutjar");
 const form = document.getElementById("loginForm");
 const msg = document.getElementById("msg");
 
+
+//Funcion para crear la cookie
 function setCookie(name, value, days) {
   const d = new Date();
   d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
   document.cookie = `${name}=${value};expires=${d.toUTCString()};path=/`;
 }
 
+//Funcion para coger un cookie
 function getCookie(name) {
   let cookies = document.cookie.split(";");
 
@@ -38,7 +41,6 @@ function getCookie(name) {
 
   return null;
 }
-
 
 // Bloquear formulario
 function disableForm() {

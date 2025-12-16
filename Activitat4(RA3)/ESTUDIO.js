@@ -27,15 +27,15 @@ function getCookie(name){
 function desactivarForm(){
     document.getElementById("user").disabled = true;
     document.getElementById("password").disabled = true;
-    form.querySelectorAll("button").disabled = true;
+    form.querySelector("button").disabled = true;
 }
 function activarForm(){
     document.getElementById("user").disabled = false;
     document.getElementById("password").disabled = false;
-    form.querySelectorAll("button").disabled = false;
+    form.querySelector("button").disabled = false;
 }
 
-if(getCookie("cookiesOK") === true){
+if(getCookie("cookiesOK") === "true"){
     activarForm();
 }else{
     desactivarForm();
@@ -44,6 +44,8 @@ if(getCookie("cookiesOK") === true){
 aceptar.addEventListener("click", () => {
     setCookie("cookiesOK", "true", 7);
     activarForm();
+    cajaCookies.style.display = "none";
+
 });
 
 denegar.addEventListener("click", () => {
@@ -63,9 +65,11 @@ form.addEventListener("submit", (e) => {
     const usuariTrobat = credencials.find(u => u.user === userInput);
     
     if(!usuariTrobat){
-        msg.textContent = "L'usuari no existeix";
-        msg.style.color = "red";
+    msg.textContent = "L'usuari no existeix";
+    msg.style.color = "red";
+    return;
     }
+
     
     if (usuariTrobat.password !== passInput) {
     msg.textContent = "La contrasenya és incorrecta";
@@ -76,7 +80,62 @@ form.addEventListener("submit", (e) => {
       // Login correcte
   msg.textContent = "Validació correcta!";
   msg.style.color = "green";
+      form.style.display = "none";
+
 
   // Guardar login en localStorage
   localStorage.setItem("loginOK", "true");
+
+  mostrarSelectCursos();
 })
+
+
+
+const cursos = ["daw", "dawbio", "dam", "asix"];
+
+const alumnes = {
+  daw: ["Pau", "Marta", "Joan"],
+  dawbio: ["Sergi", "Núria", "Arnau"],
+  dam: ["Júlia", "Albert", "Lluc"],
+  asix: ["Adrià", "Laia", "Carles"]
+};
+
+const selectContainer = document.getElementById("select-container");
+const selectCursos = document.getElementById("selectCursos");
+const taulaAlumnes = document.getElementById("taulaAlumnes");
+
+function mostrarSelectCursos() {
+  document.getElementById("form-container")
+
+  selectContainer.style.display = "block";
+
+  // Crear opciones
+  selectCursos.innerHTML = "";
+  cursos.forEach(c => {
+    const opt = document.createElement("option");
+    opt.value = c;
+    opt.textContent = c;
+    selectCursos.appendChild(opt);
+  });
+
+  mostrarTaula(selectCursos.value);
+}
+
+function mostrarTaula(curs) {
+  const llista = alumnes[curs];
+
+  let html = `<table><tr><th>Alumne</th></tr>`;
+  llista.forEach(a => html += `<tr><td>${a}</td></tr>`);
+  html += `</table>`;
+
+  taulaAlumnes.innerHTML = html;
+}
+
+selectCursos.addEventListener("change", () => {
+  mostrarTaula(selectCursos.value);
+});
+
+// Si ja estava logueado, saltar login
+if (localStorage.getItem("loginOK") === "true") {
+  mostrarSelectCursos();
+}
