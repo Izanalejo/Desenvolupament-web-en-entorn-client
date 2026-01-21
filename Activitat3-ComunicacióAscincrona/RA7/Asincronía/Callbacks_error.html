@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        function walkDog(callback) {
+            setTimeout(() => {
+                const dogWalked = true;
+
+                if (dogWalked) {
+                    callback(null, "You walk the dog 🐕");
+                } else {
+                    callback("You DIDN'T walk the dog");
+                }
+            }, 1500);
+        }
+
+        function cleanKitchen(callback) {
+            setTimeout(() => {
+                const kitchenCleaned = true;
+
+                if (kitchenCleaned) {
+                    callback(null, "You clean the kitchen 🧹");
+                } else {
+                    callback("You DIDN'T clean the kitchen");
+                }
+            }, 2500);
+        }
+
+        function takeOutTrash(callback) {
+            setTimeout(() => {
+                const trashTakenOut = false;
+
+                if (trashTakenOut) {
+                    callback(null, "You take out the trash ♻");
+                } else {
+                    callback("You DIDN'T take out the trash");
+                }
+            }, 500);
+        }
+
+        // Using callbacks in a nested fashion
+        walkDog((error, result) => {
+            if (error) {
+                console.error(error);
+            } else {
+                console.log(result);
+                cleanKitchen((error, result) => {
+                    if (error) {
+                        console.error(error);
+                    } else {
+                        console.log(result);
+                        takeOutTrash((error, result) => {
+                            if (error) {
+                                console.error(error);
+                            } else {
+                                console.log(result);
+                                console.log("You finished all the chores!");
+                            }
+                        });
+                    }
+                });
+            }
+        });</script>
+
+</body>
+
+</html>

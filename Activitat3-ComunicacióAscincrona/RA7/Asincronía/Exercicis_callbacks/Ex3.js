@@ -20,7 +20,7 @@ function transformarArray(nums, callback){
 }
 
 function multiplicar(num){
-    return num * 6;
+    return num * 3;
 }
 
 let resultado = transformarArray(nums, multiplicar);

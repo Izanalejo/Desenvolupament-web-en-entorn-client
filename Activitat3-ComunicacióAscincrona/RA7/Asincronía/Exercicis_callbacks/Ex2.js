@@ -9,19 +9,21 @@ Ex de sortida esperada amb un 5: “aprovat”. Si és inferior, suspès
 
 function avaluarNota(nota, aprovatCallback, suspesCallback){
     if(nota >= 5){
-        aprovatCallback();
+        aprovatCallback(nota);
     }else if(nota < 5){
-        suspesCallback();
+        suspesCallback(nota);
     }
     
 }
 
-function aprovat(){
+function aprovatCallback(){
     console.log("Has aprovat!");
 }
-function suspes(){
+function suspesCallback(){
     console.log("Has suspès...")
 }
 
 
-avaluarNota(2.5, aprovat, suspes);
+avaluarNota(7, aprovatCallback, suspesCallback);
+avaluarNota(3, aprovatCallback, suspesCallback);
+avaluarNota(5, aprovatCallback, suspesCallback);

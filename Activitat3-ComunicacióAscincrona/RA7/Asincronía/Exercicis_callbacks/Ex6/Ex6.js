@@ -14,7 +14,6 @@ El que passa després de la càrrega s’ha de fer mitjançant un callback
 let btnUser = document.getElementById('btnUser');
 
 function carregarUsuari(){
-    let div = document.createElement('div');
     let titulo = document.createElement('h4');
     titulo.textContent = "Carregant...";
     document.body.appendChild(titulo);
