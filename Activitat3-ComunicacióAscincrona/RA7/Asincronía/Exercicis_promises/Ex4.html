@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simular petició AJAX (setTimeout)
+</title>
+</head>
+<body>
+   <!--  Simula una petició a un servidor que:
+    Triga 1,5 segons
+    Retorna un objecte { id: 1, nom: "Anna" }
+    Mostra les propietats per pantalla -->
+
+    <script>
+        function peticio(){
+            return new Promise((resolve, reject)=>{
+                setTimeout(()=>{
+                    resolve('{ id: 1, nom: "Anna" }');
+                }, 1500);
+            });
+        }
+
+        peticio()
+            .then((value)=>{
+                console.log(value);
+            })
+    </script>
+</body>
+</html>

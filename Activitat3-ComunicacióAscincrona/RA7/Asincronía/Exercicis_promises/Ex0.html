@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercici 0 – Refactoritzar callback </title>
+</head>
+<body>
+     <!-- Transforma aquest codi amb callback en una Promise, 
+      i mostra el resultat de la crida a la funció:
+    function carregarDades(callback) {
+        setTimeout(() => {
+            callback("Dades carregades");
+        }, 1000);
+    } -->
+    <script> 
+        function carregarDadesPromise(){
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                resolve("Dades carregades");
+            }, 1000);
+            });
+        }
+        carregarDadesPromise()
+            .then((value)=> {
+                console.log(value);
+            });
+
+    </script>
+</body>
+</html>

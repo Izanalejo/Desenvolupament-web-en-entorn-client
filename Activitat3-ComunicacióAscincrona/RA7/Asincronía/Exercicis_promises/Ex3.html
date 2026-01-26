@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercici 3 – Encadenament de Promises</title>
+</head>
+<body>
+  <!--   Crea una Promise que:
+    Multipliqui un número per 2
+    Al resultat, li sumi 10
+    Mostri el resultat final -->
+
+    <script>
+        function multiplica(numero){
+            return new Promise((resolve, reject)=>{
+                let multiplicacio = numero * 2;
+                let suma = multiplicacio + 10;
+                resolve("El resultat es = " + suma);
+            });
+        }
+
+        multiplica(1)
+            .then((value)=>{
+                console.log(value);
+            });
+    </script>
+</body>
+</html>

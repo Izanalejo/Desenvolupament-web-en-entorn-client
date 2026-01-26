@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercici 6 – Procés de compra (encadenament)
+</title>
+</head>
+<body>
+  <!--   En una botiga online:
+    Es valida el carret (mínim 3 productes). Es passa un array
+    Es calcula el preu final
+    Es confirma el pagament de la comanda
+    Simula aquest procés amb Promises encadenades. -->
+
+    <label>Elegir productos:</label>
+    <div id="opciones"></div>
+    <button type="submit" id="btnSubmit">Comprar</button>
+    <script>
+        const opciones = document.getElementById('opciones');
+        const productes = [
+            {
+                nom: "Sabates",
+                preu: 20
+            },
+            {
+                nom: "Paraigües",
+                preu: 10
+            },
+            {
+                nom: "Samarreta",
+                preu: 15
+            },
+            {
+                nom: "Pantalons",
+                preu: 30
+            },
+            {
+                nom: "Jaqueta",
+                preu: 45
+            },
+            {
+                nom: "Motxilla",
+                preu: 25
+            },
+            {
+                nom: "Gorra",
+                preu: 8
+            }
+        ];
+  
+        let btnSubmit = document.getElementById('btnSubmit');
+        productes.forEach(element => {
+        let contenedor = document.createElement('div');
+        let input = document.createElement('input');
+        let nom = document.createElement('span');
+        input.type = "checkbox";
+        input.name = "productos";
+        input.value = element.nom;
+        nom.textContent = element.nom;
+
+        contenedor.appendChild(input);
+        contenedor.appendChild(nom);
+        opciones.appendChild(contenedor);
+        
+        console.log(input.value);
+        });
+        const seleccionados = [];
+        const checkboxes = document.querySelectorAll('input[name="productos"]:checked');
+        checkboxes.forEach(c => {
+            seleccionados.push(c.value);
+        });
+            
+            btnSubmit.addEventListener('click', () =>{
+            
+            console.log("Productos elegidos: ", seleccionados);
+            console.log()
+        });
+
+    </script>
+</body>
+</html>
