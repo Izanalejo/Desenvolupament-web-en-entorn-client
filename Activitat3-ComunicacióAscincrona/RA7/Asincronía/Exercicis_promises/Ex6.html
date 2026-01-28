@@ -1,82 +1,137 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ca">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exercici 6 – Procés de compra (encadenament)
-</title>
+    <title>Exercici 6 - Procés de Compra</title>
 </head>
 <body>
-  <!--   En una botiga online:
-    Es valida el carret (mínim 3 productes). Es passa un array
-    Es calcula el preu final
-    Es confirma el pagament de la comanda
-    Simula aquest procés amb Promises encadenades. -->
+    <h1>Exercici 6 - Procés de compra</h1>
+    
+    <h2>Carret:</h2>
+    <ul id="carret"></ul>
+    
+    <button onclick="iniciarCompra()">Processar Compra</button>
+    
+    <h2>Log:</h2>
+    <div id="log"></div>
 
-    <label>Elegir productos:</label>
-    <div id="opciones"></div>
-    <button type="submit" id="btnSubmit">Comprar</button>
     <script>
-        const opciones = document.getElementById('opciones');
-        const productes = [
-            {
-                nom: "Sabates",
-                preu: 20
-            },
-            {
-                nom: "Paraigües",
-                preu: 10
-            },
-            {
-                nom: "Samarreta",
-                preu: 15
-            },
-            {
-                nom: "Pantalons",
-                preu: 30
-            },
-            {
-                nom: "Jaqueta",
-                preu: 45
-            },
-            {
-                nom: "Motxilla",
-                preu: 25
-            },
-            {
-                nom: "Gorra",
-                preu: 8
-            }
+        // Carret amb productes
+        const carret = [
+            { nom: "Portàtil", preu: 899.99 },
+            { nom: "Ratolí", preu: 25.50 },
+            { nom: "Teclat", preu: 65.00 }
         ];
-  
-        let btnSubmit = document.getElementById('btnSubmit');
-        productes.forEach(element => {
-        let contenedor = document.createElement('div');
-        let input = document.createElement('input');
-        let nom = document.createElement('span');
-        input.type = "checkbox";
-        input.name = "productos";
-        input.value = element.nom;
-        nom.textContent = element.nom;
 
-        contenedor.appendChild(input);
-        contenedor.appendChild(nom);
-        opciones.appendChild(contenedor);
-        
-        console.log(input.value);
-        });
-        const seleccionados = [];
-        const checkboxes = document.querySelectorAll('input[name="productos"]:checked');
-        checkboxes.forEach(c => {
-            seleccionados.push(c.value);
-        });
-            
-            btnSubmit.addEventListener('click', () =>{
-            
-            console.log("Productos elegidos: ", seleccionados);
-            console.log()
-        });
+        // Mostrar carret
+        function mostrarCarret() {
+            const carretElement = document.getElementById('carret');
+            carretElement.innerHTML = '';
+            carret.forEach(producte => {
+                const li = document.createElement('li');
+                li.textContent = `${producte.nom} - ${producte.preu}€`;
+                carretElement.appendChild(li);
+            });
+        }
 
+        // Afegir al log
+        function log(missatge) {
+            const logElement = document.getElementById('log');
+            const p = document.createElement('p');
+            p.textContent = missatge;
+            logElement.appendChild(p);
+        }
+
+        // 1. Validar carret
+        function validarCarret(productes) {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    log("Validant carret...");
+                    
+                    if (productes.length >= 3) {
+                        log(`Carret vàlid amb ${productes.length} productes`);
+                        resolve({
+                            productes: productes
+                        });
+                    } else {
+                        reject(`El carret necessita mínim 3 productes. Tens ${productes.length}`);
+                    }
+                }, 1000);
+            });
+        }
+
+        // 2. Calcular preu final
+        function calcularPreuFinal(dades) {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    log("Calculant preu final...");
+                    
+                    const preuTotal = dades.productes.reduce((total, producte) => {
+                        return total + producte.preu;
+                    }, 0);
+                    
+                    if (preuTotal > 0) {
+                        log(`Preu calculat: ${preuTotal.toFixed(2)}€`);
+                        resolve({
+                            ...dades,
+                            preuTotal: preuTotal.toFixed(2)
+                        });
+                    } else {
+                        reject("No s'ha pogut calcular el preu");
+                    }
+                }, 1500);
+            });
+        }
+
+        // 3. Confirmar pagament
+        function confirmarPagament(dades) {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    log("Processant pagament...");
+                    
+                    const pagamentExitos = true;
+                    
+                    if (pagamentExitos) {
+                        const numComanda = Math.floor(Math.random() * 10000);
+                        log(` Pagament confirmat de ${dades.preuTotal}€`);
+                        resolve({
+                            ...dades,
+                            numComanda: numComanda
+                        });
+                    } else {
+                        reject("El pagament ha sigut rebutjat");
+                    }
+                }, 2000);
+            });
+        }
+
+        // Iniciar compra amb promises encadenades
+        function iniciarCompra() {
+            document.getElementById('log').innerHTML = '';
+            log("Iniciant procés de compra...");
+            
+            validarCarret(carret)
+                .then(dades => {
+                    return calcularPreuFinal(dades);
+                })
+                .then(dades => {
+                    return confirmarPagament(dades);
+                })
+                .then(dades => {
+                    log(`🎉 Comanda #${dades.numComanda} completada amb èxit!`);
+                    log(`Total productes: ${dades.productes.length}`);
+                    log(`Import total: ${dades.preuTotal}€`);
+                })
+                .catch(error => {
+                    log(`⛔ Error: ${error}`);
+                })
+                .finally(() => {
+                    log("Procés finalitzat");
+                });
+        }
+
+        // Inicialitzar
+        mostrarCarret();
     </script>
 </body>
 </html>
