@@ -10,20 +10,36 @@
     Multipliqui un número per 2
     Al resultat, li sumi 10
     Mostri el resultat final -->
-
+    <input type="text" id="display"/>
+    <button id="boto">Calcular</button>
+    <span id="resultat"></span>
     <script>
         function multiplica(numero){
-            return new Promise((resolve, reject)=>{
-                let multiplicacio = numero * 2;
-                let suma = multiplicacio + 10;
-                resolve("El resultat es = " + suma);
+            const r =  new Promise((resolve, reject)=>{
+
+                if(isNaN(parseInt(numero))){
+                    reject("No es un numero vlid")
+                }else{
+                    resolve(numero * 2);
+                }
             });
+            return r;
+        }
+        function operacioSuma(numero){
+            const r= new Promise((resolve, reject)=>{
+                resolve(numero+10);
+            })
+            return r;
         }
 
-        multiplica(1)
-            .then((value)=>{
-                console.log(value);
-            });
+        function calcularTotal(){
+            const display = document.getElementById('display');
+            let total = multiplica(display.value)
+            .then(value=>{operacioSUma(value)
+            .then(value=>document.getElementById('resultat').textContent=value);}).catch(value=>console.error(error));
+        }
+
+        calcularTotal();
     </script>
 </body>
 </html>
