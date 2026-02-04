@@ -4,5 +4,7 @@ const config = {
         user: "root", 
         password: "", 
         database: "test_api" },
+    secretKey: "clau_secreta_super_segura"
+
 };
 module.exports = config;
