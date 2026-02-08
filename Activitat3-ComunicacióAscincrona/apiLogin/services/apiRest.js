@@ -1,6 +1,7 @@
 const db = require("./db");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken"); // Importem JWT const config = require('../config'); //Necessitem la clau secreta
+const config = require('../config'); 
 /* --------------------    
     Helper per a errors 
 -------------------- */
@@ -21,17 +22,30 @@ async function getUsers() {
 -------------------- */
 async function login(req, res) {
     const { username, userpass } = req.body;
+    
     if (!username || !userpass) {
         throwError("Faltan usuario o contraseña", 400);
     }
+    
     const users = await db.query("SELECT * FROM users WHERE username = ?", [
         username,
     ]);
+    
     if (!users || users.length === 0) {
-        //Per si de cas torna un array buit [] (no troba res) verifiquem també .length ===0
         throwError("Usuario o password incorrecto", 401);
     }
-    // Generar JWT   
+    
+    // ✅ Extraer el primer usuario
+    const user = users[0];
+    
+    // ✅ Verificar la contraseña con bcrypt
+    const passwordMatch = await bcrypt.compare(userpass, user.userpass);
+    
+    if (!passwordMatch) {
+        throwError("Usuario o password incorrecto", 401);
+    }
+    
+    // ✅ Generar JWT   
     const token = jwt.sign(
         {
             userId: user.id,
@@ -41,14 +55,13 @@ async function login(req, res) {
         {
             expiresIn: '2h'
         }
-        // El token expira en 2 hores   
     );
-    //Contestem al router   
+    
+    // ✅ Contestar al router (solo un return)
     return {     
-    message: "Login correcte", accessToken: token // Enviem el token al client   
+        message: "Login correcte", 
+        accessToken: token
     };
-    //Contestem al router
-    return { message: "Login correcte", userId: user.id };
 }
 /* --------------------    
 LOGOUT – NO SERIA NECESSARI 

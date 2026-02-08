@@ -2,8 +2,10 @@ const config = {
     db: { 
         host: "localhost", 
         user: "root", 
-        password: "", 
-        database: "test_api" },
+        password: "root", 
+        database: "test_api",
+        port: 8889
+    },
     secretKey: "clau_secreta_super_segura"
 
 };
