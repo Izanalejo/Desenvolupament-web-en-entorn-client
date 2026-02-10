@@ -1,7 +1,8 @@
 const db = require("./db");
 const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken"); // Importem JWT const config = require('../config'); //Necessitem la clau secreta
+const jwt = require("jsonwebtoken");
 const config = require('../config'); 
+
 /* --------------------    
     Helper per a errors 
 -------------------- */
@@ -10,6 +11,7 @@ function throwError(message, status) {
     error.statusCode = status;
     throw error;
 }
+
 async function getUsers() {
     const rows = await db.query(`SELECT * FROM users`);
     if (!rows || rows.length === 0) {
@@ -17,6 +19,7 @@ async function getUsers() {
     }
     return rows;
 }
+
 /* --------------------    
     LOGIN 
 -------------------- */
@@ -57,18 +60,18 @@ async function login(req, res) {
         }
     );
     
-    // ✅ Contestar al router (solo un return)
+    // ✅ MODIFICADO: Devolvemos también el username para mostrarlo en el frontend
     return {     
         message: "Login correcte", 
-        accessToken: token
+        accessToken: token,
+        username: user.username // 🔹 NUEVO: Para mostrar en la interfaz
     };
 }
+
 /* --------------------    
-LOGOUT – NO SERIA NECESSARI 
+LOGOUT – Gestionado en las rutas
 -------------------- */
 async function logout(req, res) {
-    // El Logout a JWT sol fer-se al client (esborrant el token). 
-    // // Al servidor no hi ha res a destruir perquè no guardem sessió.  
     return { message: "Token invalidat (gestionar en el client)" };
 }
 

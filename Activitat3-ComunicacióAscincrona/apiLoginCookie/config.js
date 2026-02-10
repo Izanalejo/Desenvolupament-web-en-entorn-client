@@ -2,14 +2,11 @@ const config = {
     db: { 
         host: "localhost", 
         user: "root", 
-        password: "", 
+        password: "root", 
         database: "test_api",
+        port: 8889
     },
-    // Claves secretas diferentes para cada token
-    secretKey: "clau_secreta_super_segura",
-    refreshSecretKey: "clau_encara_mes_secreta_per_refresh",
-    // Tiempos de expiración
-    accessTokenLife: '15m',
-    refreshTokenLife: '7d'
+    secretKey: "clau_secreta_super_segura"
+
 };
 module.exports = config;
